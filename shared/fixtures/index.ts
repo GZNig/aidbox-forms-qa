@@ -7,53 +7,58 @@ import { config } from '@config';
 import { FormTemplatesPage } from '@pom/formTemplatesPage';
 
 export interface AidboxInstance {
-    url: string;
-    jwt: string;
-    adminPassword: string;
-    licenseId: string;
+  url: string;
+  jwt: string;
+  adminPassword: string;
+  licenseId: string;
 }
 
 export const test = base.extend<
-    {
-        authenticatedPage: { page: Page };
-    },
-    {
-        aidboxInstance: AidboxInstance;
-    }
+  {
+    authenticatedPage: { page: Page };
+  },
+  {
+    aidboxInstance: AidboxInstance;
+  }
 >({
-    aidboxInstance: [
-        async ({ }, use) => {
-            const { license } = await createLicense();
-            if (!license) throw new Error('No license returned');
+  aidboxInstance: [
+    async ({}, use) => {
+      const { license } = await createLicense();
+      if (!license) throw new Error('No license returned');
 
-            try {
-                await startInstance(license.id, config.baseURL!);
+      try {
+        await startInstance(license.id, config.baseURL!);
 
-                const instance: AidboxInstance = {
-                    url: config.baseURL!,
-                    licenseId: license.id,
-                    jwt: license.jwt,
-                    adminPassword: license.adminPassword,
-                };
+        const instance: AidboxInstance = {
+          url: config.baseURL!,
+          licenseId: license.id,
+          jwt: license.jwt,
+          adminPassword: license.adminPassword,
+        };
 
-                await use(instance);
-            } finally {
-                await stopInstance();
-                await deleteLicense(license.id);
-            }
-        },
-        { scope: 'worker' },
-    ],
-
-    authenticatedPage: async ({ aidboxInstance, page, context, baseURL }, use) => {
-        await test.step('Login as admin', async () => {
-            const cookies = await loginAsAdmin(page, context as BrowserContext, baseURL!, aidboxInstance.adminPassword);
-            await context.addCookies(cookies.map(raw => parseSetCookie(raw, baseURL!)));
-            await page.goto(new FormTemplatesPage(page).path);
-        });
-
-        await use({ page });
+        await use(instance);
+      } finally {
+        await stopInstance();
+        await deleteLicense(license.id);
+      }
     },
+    { scope: 'worker' },
+  ],
+
+  authenticatedPage: async ({ aidboxInstance, page, context, baseURL }, use) => {
+    await test.step('Login as admin', async () => {
+      const cookies = await loginAsAdmin(
+        page,
+        context as BrowserContext,
+        baseURL!,
+        aidboxInstance.adminPassword
+      );
+      await context.addCookies(cookies.map(raw => parseSetCookie(raw, baseURL!)));
+      await page.goto(new FormTemplatesPage(page).path);
+    });
+
+    await use({ page });
+  },
 });
 
 export { expect };

@@ -1,4 +1,4 @@
-import { Page, Locator, expect, test } from '@playwright/test';
+import { Page, Locator, test } from '@playwright/test';
 import { BasePage } from './basePage';
 import { QuestionnairesTabs } from './tabsComponent';
 

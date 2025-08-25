@@ -41,9 +41,9 @@ tests/                # тесты
 
 ## Тесты
 
-- **formGallery.spec.ts** - пара тестов на функционал Form Gallery 
-- **fromTemplates.spec.ts** - пара тестов на функционал Form Templates 
-- **uiBuilder.spec.ts** - пара тестов на функционал UiBuilder 
+- **formGallery.spec.ts** - пара тестов на функционал Form Gallery
+- **fromTemplates.spec.ts** - пара тестов на функционал Form Templates
+- **uiBuilder.spec.ts** - пара тестов на функционал UiBuilder
 
 ## Команды
 

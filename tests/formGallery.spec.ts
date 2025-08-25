@@ -35,10 +35,8 @@ test.describe('Aidbox - Questionnaires (Form Gallery)', () => {
     await galleryPage.filterByText(randomTitle);
 
     await test.step(`Ensure the number of cards displayed: ${expectedTitles.length}`, async () =>
-      await expect(galleryPage.cards).toHaveCount(expectedTitles.length)
-    );
+      await expect(galleryPage.cards).toHaveCount(expectedTitles.length));
     await test.step(`Ensure cards titles are correct: ${expectedTitles}`, async () =>
-      expect(await galleryPage.getCardTitles()).toEqual(expectedTitles)
-    );
+      expect(await galleryPage.getCardTitles()).toEqual(expectedTitles));
   });
 });

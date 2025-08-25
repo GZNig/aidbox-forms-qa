@@ -12,27 +12,30 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: 1,
   reporter: [
-    ['html',{ outputFile: 'test-results/results.html' }],
+    ['html', { outputFile: 'test-results/results.html' }],
     ['json', { outputFile: 'test-results/results.json' }],
     ['junit', { outputFile: 'test-results/results.xml' }],
-    ['playwright-qase-reporter', {
-      debug: false,
-      mode: 'testops',
-      environment: qaseConfig.environmentId,
-      testops: {
-        api: {
-          token: qaseConfig.apiKey,
-        },
-        project: qaseConfig.projectCode,
-        uploadAttachments: true,
-        run: {
-          id: undefined,
-          title: "Test run as a example",
-          description: "Test run as a example to present the results in the Qase TestOps",
-          complete: true,
+    [
+      'playwright-qase-reporter',
+      {
+        debug: false,
+        mode: 'testops',
+        environment: qaseConfig.environmentId,
+        testops: {
+          api: {
+            token: qaseConfig.apiKey,
+          },
+          project: qaseConfig.projectCode,
+          uploadAttachments: true,
+          run: {
+            id: undefined,
+            title: 'Test run as a example',
+            description: 'Test run as a example to present the results in the Qase TestOps',
+            complete: true,
+          },
         },
       },
-    }],
+    ],
   ],
   use: {
     baseURL: config.baseURL,

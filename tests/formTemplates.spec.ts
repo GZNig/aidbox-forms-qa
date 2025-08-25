@@ -24,13 +24,19 @@ test.describe('Aidbox - Questionnaires (Form Templates)', () => {
     expect(await uiBuilderPage.isOpen()).toBe(true);
   });
 
-  test(qase(131, 'No forms found is displayed when filter by text if there are no forms or components with this text'), async () => {
-    const nonexistentText = `__nonexistent_${Date.now().toString()}__`;
-    await formTemplatesPage.filterByText(nonexistentText);
+  test(
+    qase(
+      131,
+      'No forms found is displayed when filter by text if there are no forms or components with this text'
+    ),
+    async () => {
+      const nonexistentText = `__nonexistent_${Date.now().toString()}__`;
+      await formTemplatesPage.filterByText(nonexistentText);
 
-    await test.step('Ensure the list of cards is empty', async () => {
-      await expect(formTemplatesPage.cards).toHaveCount(0);
-      await expect(formTemplatesPage.emptyState).toBeVisible();
-    });
-  });
+      await test.step('Ensure the list of cards is empty', async () => {
+        await expect(formTemplatesPage.cards).toHaveCount(0);
+        await expect(formTemplatesPage.emptyState).toBeVisible();
+      });
+    }
+  );
 });
