@@ -12,9 +12,12 @@ export async function startInstance(licenseId: string, baseURL: string) {
   for (let i = 0; i < 30; i++) {
     try {
       const r = await fetch(`${baseURL}/health`);
-      if (r.ok) return;
+      if (r.ok) {
+        console.log(`Instance is ready on: ${baseURL}`);
+        return;
+      }
     } catch {
-      console.log('Health check error, retrying...');
+      console.log('Health check, retrying...');
     }
     await new Promise((r) => setTimeout(r, 2000));
   }
