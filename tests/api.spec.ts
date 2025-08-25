@@ -38,7 +38,7 @@ test.describe('Aidbox API Client', () => {
   });
 
   test('Creates a component questionnaire with items', async ({ aidBoxClient }) => {
-    const componentData = createComponentQuestionnaire('API Test Component', 'api-test-component');
+    const componentData = createComponentQuestionnaire('API Test Component');
 
     const createdComponent = await aidBoxClient.resource.create('Questionnaire', componentData);
     expect(createdComponent).toBeDefined();

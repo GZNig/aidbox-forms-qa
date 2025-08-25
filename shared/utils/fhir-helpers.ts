@@ -69,10 +69,7 @@ export function createQuestionGroup(
 /**
  * Создает анкету компонента
  */
-export function createComponentQuestionnaire(
-  title: string = 'Test Component',
-  url: string = 'test-component'
-): QuestionnaireData {
+export function createComponentQuestionnaire(title: string = 'Test Component'): QuestionnaireData {
   const questionnaire: QuestionnaireData = {
     resourceType: 'Questionnaire',
     title,

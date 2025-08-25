@@ -30,7 +30,7 @@ export default defineConfig({
           run: {
             id: undefined,
             title: 'Test run as a example',
-            description: 'Test run as a example to present the results in the Qase TestOps',
+            description: 'Test run as an example to present the results in the Qase TestOps',
             complete: true,
           },
         },

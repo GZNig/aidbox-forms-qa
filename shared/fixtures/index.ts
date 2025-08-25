@@ -1,4 +1,4 @@
-import { test as base, expect, Page, BrowserContext, chromium } from '@playwright/test';
+import { test as base, expect, Page } from '@playwright/test';
 import { createLicense, deleteLicense } from '@clients/aidbox-rpc-client';
 import { parseSetCookie } from '@utils/cookies';
 import { startInstance, stopInstance } from '@utils/docker';
