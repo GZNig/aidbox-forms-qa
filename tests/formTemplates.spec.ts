@@ -39,4 +39,25 @@ test.describe('Aidbox - Questionnaires (Form Templates)', () => {
       });
     }
   );
+  test(qase(7, 'Component is deleted when click "Delete" if it has "draft" status'), async ({ aidBoxClient }) => {
+    const created = await test.step('Create a new questionnaire', async () => {
+      return await aidBoxClient.resource.create('Questionnaire', {
+        resourceType: 'Questionnaire',
+        title: `API Test Form ${Date.now()}`,
+        status: 'draft',
+        extension: [{ url: 'random-extension', valueString: 'independent-child' }],
+        item: [{ linkId: 'q1', text: 'Question', type: 'string', required: true }],
+      });
+    });
+
+    await test.step('Ensure the card is visible', async () => {
+      await formTemplatesPage.page.reload();
+      await expect(formTemplatesPage.cards).toContainText(created.title!);
+    });
+
+    await formTemplatesPage.deleteCard(created.title!);
+    await test.step('Ensure the card is deleted', async () => {
+      expect(formTemplatesPage.cards).not.toContainText(created.title!);
+    });
+  });
 });
