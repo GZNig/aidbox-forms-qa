@@ -8,6 +8,7 @@ export class FormTemplatesPage extends BasePage {
   readonly createTemplateBtn: Locator;
   readonly createInUiBuilderBtn: Locator;
   readonly importQuestionnaireBtn: Locator;
+  readonly deleteBtn: Locator;
   readonly emptyState: Locator;
   readonly tabs: QuestionnairesTabs;
   readonly cards: Locator;
@@ -25,6 +26,7 @@ export class FormTemplatesPage extends BasePage {
     this.importQuestionnaireBtn = page.locator(
       '[data-test-id="questionnaire-grid__import-questionnaire-button"]'
     );
+    this.deleteBtn = page.locator('[data-test-id="questionnaire-grid__form-menu-delete-button"]');
     this.emptyState = page.getByText('No forms found.');
     this.tabs = new QuestionnairesTabs(page);
     this.cards = page.locator('[data-test-id="questionnaire-grid__select-form-button"]');
@@ -68,6 +70,15 @@ export class FormTemplatesPage extends BasePage {
   async filterByText(text: string): Promise<void> {
     await test.step(`Filter by text: ${text}`, async () => {
       await this.searchInput.fill(text);
+    });
+  }
+
+  async deleteCard(name: string): Promise<void> {
+    await test.step(`Delete card: ${name}`, async () => {
+      const card = await this.getCardByName(name);
+      await card.menuBtn.click();
+      await this.deleteBtn.waitFor({ state: 'visible' });
+      await this.deleteBtn.click();
     });
   }
 }
