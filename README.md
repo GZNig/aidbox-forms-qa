@@ -28,6 +28,22 @@ pnpm test:ui          # с UI
 pnpm test:headed      # видимый браузер
 ```
 
+## CI/CD
+
+GitHub Actions автоматически запускает:
+- **Code Quality** → линтинг, проверка типов, форматирование
+- **Tests** → Playwright тесты с PostgreSQL в Docker
+
+### Настройка Secrets
+
+Добавьте в GitHub Secrets:
+- `AIDBOX_API_KEY` - API ключ Aidbox
+- `AIDBOX_PORTAL_URL` - URL портала Aidbox
+- `QASE_API_KEY` - API ключ Qase
+- `QASE_PROJECT_CODE` - код проекта в Qase
+- `QASE_BASE_URL` - базовый URL Qase API
+- `QASE_ENVIRONMENT_ID` - ID окружения в Qase
+
 ## Структура
 
 ```
@@ -37,12 +53,12 @@ shared/
 ├── clients/          # API клиенты
 └── utils/            # утилиты
 tests/                # тесты
+.github/workflows/    # CI/CD
 ```
 
 ## Тесты
 
 - **formGallery.spec.ts** - пара тестов на функционал Form Gallery
-- **fromTemplates.spec.ts** - пара тестов на функционал Form Templates
 - **uiBuilder.spec.ts** - пара тестов на функционал UiBuilder
 
 ## Команды
@@ -51,6 +67,7 @@ tests/                # тесты
 pnpm lint            # проверка кода
 pnpm format          # форматирование
 pnpm type-check      # проверка типов
+pnpm check           # все проверки
 ```
 
 ## Требования
