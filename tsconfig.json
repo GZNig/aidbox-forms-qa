@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@utils/*": ["./shared/utils/*"],
+      "@fixtures/*": ["./shared/fixtures/*"],
+      "@clients/*": ["./shared/clients/*"],
+      "@config": ["./shared/config.ts"],
+      "@pom/*": ["./shared/pom/*"]
+    }
+  },
+  "include": ["tests/**/*", "shared/**/*", "src/**/*"],
+  "exclude": ["node_modules", "dist", "build"]
+}
