@@ -31,7 +31,7 @@ pnpm test:headed      # видимый браузер
 ## CI/CD
 
 GitHub Actions автоматически запускает:
-- **Code Quality** → линтинг, проверка типов, форматирование
+- **Static Checks** → линтинг, проверка типов, форматирование
 - **Tests** → Playwright тесты с PostgreSQL в Docker
 
 ### Настройка Secrets
@@ -69,10 +69,3 @@ pnpm format          # форматирование
 pnpm type-check      # проверка типов
 pnpm check           # все проверки
 ```
-
-## Требования
-
-- Node.js 18+
-- pnpm 10.13.1+
-- Docker Desktop
-- Aidbox лицензия
