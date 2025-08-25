@@ -60,8 +60,10 @@ tests/                # тесты
 
 ## Тесты
 
+- **api.spec.ts** - чучуточка тестов на апи
 - **formGallery.spec.ts** - пара тестов на функционал Form Gallery
 - **uiBuilder.spec.ts** - пара тестов на функционал UiBuilder
+- **formTemplates.spec.ts** - пара тестов на функционал Form Templates
 
 ## Команды
 
@@ -74,10 +76,3 @@ pnpm format           # форматирование
 pnpm type-check       # проверка типов
 pnpm check            # все проверки (lint + format + type-check)
 ```
-
-## Требования
-
-- Node.js 20+
-- pnpm 10.13.1+
-- Docker Desktop
-- Aidbox лицензия
