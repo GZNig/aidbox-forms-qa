@@ -1,54 +1,47 @@
 import { expect, test } from '@fixtures/index';
-import { createComponentQuestionnaire } from '@utils/fhir-helpers';
-import { QuestionnaireData } from '@utils/fhir-helpers';
+import { createComponentQuestionnaire, QuestionnaireData } from '@utils/fhir-helpers';
 
 test.describe('Aidbox API Client', () => {
-  test('Health check returns status 200', async ({ aidBoxClient }) => {
-    try {
-      const response = await aidBoxClient.HTTPClient().get('health');
-      expect(response.response.status).toBe(200);
-    } catch (error) {
-      expect(error).toBeDefined();
-    }
+  test('Health check returns status 200', async ({ aidBoxClient }) => {
+    const response = await aidBoxClient.HTTPClient().get('health');
+    expect(response.response.status).toBe(200);
   });
 
   test('Creates and retrieves a Questionnaire resource', async ({ aidBoxClient }) => {
     const questionnaireData: QuestionnaireData = {
       resourceType: 'Questionnaire',
-      title: 'API Test Form',
+      title: `API Test Form ${Date.now()}`,
       status: 'draft',
-      item: [],
+      item: [{ linkId: 'q1', text: 'Question', type: 'string', required: true }],
     };
-    questionnaireData.item = [
-      {
-        linkId: 'q1',
-        text: 'Question',
-        type: 'string',
-        required: true,
-      },
-    ];
 
-    const createdQuestionnaire = await aidBoxClient.resource.create(
-      'Questionnaire',
-      questionnaireData
-    );
-    expect(createdQuestionnaire).toBeDefined();
-    expect(createdQuestionnaire.id).toBeDefined();
-    expect(createdQuestionnaire.title).toBe('API Test Form');
+    const createdQuestionnaire = await test.step('Create Questionnaire', async () => {
+      return aidBoxClient.resource.create('Questionnaire', questionnaireData);
+    });
+
+    await test.step('Validate created Questionnaire', async () => {
+      expect(createdQuestionnaire).toBeDefined();
+      expect(createdQuestionnaire.resourceType).toBe(questionnaireData.resourceType);
+      expect(createdQuestionnaire.id).toBeDefined();
+      expect(createdQuestionnaire.title).toBe(questionnaireData.title);
+      expect(createdQuestionnaire.item).toEqual(questionnaireData.item);
+    });
   });
 
   test('Creates a component questionnaire with items', async ({ aidBoxClient }) => {
-    const componentData = createComponentQuestionnaire('API Test Component');
+    const componentData = createComponentQuestionnaire(`API Test Component ${Date.now()}`);
+    const createdComponent = await test.step('Create Component Questionnaire', async () => {
+      return aidBoxClient.resource.create('Questionnaire', componentData);
+    });
 
-    const createdComponent = await aidBoxClient.resource.create('Questionnaire', componentData);
-    expect(createdComponent).toBeDefined();
-    expect(createdComponent.id).toBeDefined();
-    expect(createdComponent.title).toBe('API Test Component');
-    expect(createdComponent.item).toBeDefined();
-    expect(createdComponent.item!.length).toBeGreaterThan(0);
-
-    // Проверяем структуру вопросов
-    const firstQuestion = createdComponent.item![0];
-    expect(firstQuestion).toEqual(componentData.item![0]);
+    await test.step('Ensure the component is created', async () => {
+      expect(createdComponent).toBeDefined();
+      expect(createdComponent.resourceType).toBe(componentData.resourceType);
+      expect(createdComponent.id).toBeDefined();
+      expect(createdComponent.title).toBe(componentData.title);
+      expect(createdComponent.item).toBeDefined();
+      expect(createdComponent.item!.length).toBeGreaterThan(0);
+      expect(createdComponent.item![0]).toEqual(createdComponent.item![0]);
+    });
   });
 });
