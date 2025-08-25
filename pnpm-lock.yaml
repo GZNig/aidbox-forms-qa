@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      '@aidbox/client-sdk-js':
-        specifier: ^1.2.11
-        version: 1.2.11
+      '@aidbox/sdk-r4':
+        specifier: ^1.0.15
+        version: 1.0.15
       dotenv:
         specifier: ^16.4.0
         version: 16.6.1
@@ -48,9 +48,9 @@ importers:
 
 packages:
 
-  '@aidbox/client-sdk-js@1.2.11':
-    resolution: {integrity: sha512-BRB0bJ+WId0k+Ro2R/Ox+JfCyXzzyt+YIiALW50gJPN6dpL0pUsGYbLSQdMWAlxX3RaiwSFfWco95Vs1mYukqg==}
-    engines: {node: '>=10'}
+  '@aidbox/sdk-r4@1.0.15':
+    resolution: {integrity: sha512-2/64s0TVVRVLel3TwOdHX34sgzX9V21dqMwOmc3QBdmJ8t9iQ0CnaCxGro90hOiT2u9kyR6lVcq+0GX2e+ZC6w==}
+    engines: {node: '>=18'}
 
   '@eslint-community/eslint-utils@4.7.0':
     resolution: {integrity: sha512-dyybb3AcajC7uha6CvhdVRJqaKyn7w2YKqKyAN37NKYgZT36w+iRb0Dymmc5qEJ549c/S31cMMSFd75bteCpCw==}
@@ -82,6 +82,9 @@ packages:
   '@humanwhocodes/object-schema@2.0.3':
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
+
+  '@juanelas/base64@1.1.5':
+    resolution: {integrity: sha512-mjAF27LzwfYobdwqnxZgeucbKT5wRRNvILg3h5OvCWK+3F7mw/A1tnjHnNiTYtLmTvT/bM1jA5AX7eQawDGs1w==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -797,7 +800,10 @@ packages:
 
 snapshots:
 
-  '@aidbox/client-sdk-js@1.2.11': {}
+  '@aidbox/sdk-r4@1.0.15':
+    dependencies:
+      '@juanelas/base64': 1.1.5
+      tslib: 2.8.1
 
   '@eslint-community/eslint-utils@4.7.0(eslint@8.57.1)':
     dependencies:
@@ -833,6 +839,8 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/object-schema@2.0.3': {}
+
+  '@juanelas/base64@1.1.5': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
