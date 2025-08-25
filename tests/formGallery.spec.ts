@@ -1,6 +1,7 @@
 import { expect, test } from '@fixtures/index';
 import { FormGalleryPage } from '@pom/formGalleryPage';
 import { UiBuilderPage } from '@pom/uiBuilderPage';
+import { qase } from 'playwright-qase-reporter';
 
 test.describe('Aidbox - Questionnaires (Form Gallery)', () => {
   let galleryPage: FormGalleryPage;
@@ -16,7 +17,7 @@ test.describe('Aidbox - Questionnaires (Form Gallery)', () => {
     expect(await galleryPage.isOpen()).toBe(true);
   });
 
-  test('Redirect to UI Builder when import questionnaire from gallery', async () => {
+  test(qase(128, 'Redirect to UI Builder when import questionnaire from gallery'), async () => {
     const [firstTitle] = await galleryPage.getCardTitles();
     const formCard = await galleryPage.getFormCardByName(firstTitle);
     await formCard.importBtn.click();
@@ -24,7 +25,7 @@ test.describe('Aidbox - Questionnaires (Form Gallery)', () => {
     expect(await uiBuilderPage.isOpen()).toBe(true);
   });
 
-  test('Shows only specific questionnaires when filter by title', async () => {
+  test(qase(129, 'Shows only specific questionnaires when filter by title'), async () => {
     const allTitles = await galleryPage.getCardTitles();
     const randomTitle = allTitles[Math.floor(Math.random() * allTitles.length)];
 
