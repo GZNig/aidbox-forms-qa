@@ -32,7 +32,7 @@
     "typescript": "^5.5.0"
   },
   "dependencies": {
-    "@aidbox/client-sdk-js": "^1.2.11",
+    "@aidbox/sdk-r4": "^1.0.15",
     "dotenv": "^16.4.0"
   }
 }
