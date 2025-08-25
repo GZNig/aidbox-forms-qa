@@ -25,6 +25,8 @@ test.describe('Aidbox - Questionnaires (Form Templates)', () => {
   test('No forms found is displayed when filter by text if there are no forms or components with this text', async () => {
     const nonexistentText = `__nonexistent_${Date.now().toString()}__`;
     await formTemplatesPage.searchInput.fill(nonexistentText);
+
+    expect(await formTemplatesPage.isOpen()).toBe(true);
     expect(await formTemplatesPage.getAllCards()).toEqual([]);
     expect(await formTemplatesPage.emptyState.isVisible()).toBe(true);
   });
