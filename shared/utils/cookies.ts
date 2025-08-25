@@ -20,7 +20,7 @@ export async function getAuthCookies(
       },
     };
 
-    const req = request(options, res => {
+    const req = request(options, (res) => {
       const setCookieHeaders = res.headers['set-cookie'];
 
       const cookies = setCookieHeaders
@@ -36,7 +36,7 @@ export async function getAuthCookies(
       resolve(cookies);
     });
 
-    req.on('error', error => reject(error));
+    req.on('error', (error) => reject(error));
     req.write(`_csrf=${csrf}&username=admin&password=${adminPassword}`);
     req.end();
   });
@@ -50,7 +50,7 @@ export function parseSetCookie(raw: string, baseURL: string) {
     value: value?.trim() || '',
     domain: new URL(baseURL).hostname,
     path: '/',
-    secure: attrs.some(a => /secure/i.test(a)),
-    httpOnly: attrs.some(a => /httponly/i.test(a)),
+    secure: attrs.some((a) => /secure/i.test(a)),
+    httpOnly: attrs.some((a) => /httponly/i.test(a)),
   };
 }

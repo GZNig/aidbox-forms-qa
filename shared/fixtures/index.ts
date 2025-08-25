@@ -53,7 +53,7 @@ export const test = base.extend<
         baseURL!,
         aidboxInstance.adminPassword
       );
-      await context.addCookies(cookies.map(raw => parseSetCookie(raw, baseURL!)));
+      await context.addCookies(cookies.map((raw) => parseSetCookie(raw, baseURL!)));
       await page.goto(new FormTemplatesPage(page).path);
     });
 

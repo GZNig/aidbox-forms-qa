@@ -31,12 +31,14 @@ pnpm test:headed      # видимый браузер
 ## CI/CD
 
 GitHub Actions автоматически запускает:
+
 - **Static Checks** → линтинг, проверка типов, форматирование
 - **Tests** → Playwright тесты с PostgreSQL в Docker
 
 ### Настройка Secrets
 
 Добавьте в GitHub Secrets:
+
 - `AIDBOX_API_KEY` - API ключ Aidbox
 - `AIDBOX_PORTAL_URL` - URL портала Aidbox
 - `QASE_API_KEY` - API ключ Qase
@@ -64,8 +66,18 @@ tests/                # тесты
 ## Команды
 
 ```bash
-pnpm lint            # проверка кода
-pnpm format          # форматирование
-pnpm type-check      # проверка типов
-pnpm check           # все проверки
+pnpm test             # все тесты
+pnpm test:ui          # с UI
+pnpm test:headed      # видимый браузер
+pnpm lint             # проверка кода
+pnpm format           # форматирование
+pnpm type-check       # проверка типов
+pnpm check            # все проверки (lint + format + type-check)
 ```
+
+## Требования
+
+- Node.js 20+
+- pnpm 10.13.1+
+- Docker Desktop
+- Aidbox лицензия

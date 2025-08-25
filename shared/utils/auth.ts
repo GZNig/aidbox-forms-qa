@@ -9,6 +9,6 @@ export async function loginAsAdmin(
 ) {
   await page.goto(`${baseURL}/auth/login`);
   const csrf = await page.locator('input[name="_csrf"]').inputValue();
-  const cookieLoginString = (await context.cookies()).map(c => `${c.name}=${c.value}`).join('; ');
+  const cookieLoginString = (await context.cookies()).map((c) => `${c.name}=${c.value}`).join('; ');
   return getAuthCookies(baseURL, csrf, adminPassword, cookieLoginString);
 }

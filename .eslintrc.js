@@ -1,9 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: [
-    '@typescript-eslint/recommended',
-    'prettier',
-  ],
+  extends: ['eslint:recommended', 'prettier'],
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
@@ -11,6 +8,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'no-empty-pattern': 'off',
   },
   env: {
     node: true,

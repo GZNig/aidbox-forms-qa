@@ -28,7 +28,7 @@ test.describe('Aidbox - Questionnaires (UI Builder)', () => {
       await uiBuilderPage.selectReusableContext(type);
 
       const savePromise = uiBuilderPage.page.waitForResponse(
-        response =>
+        (response) =>
           response.url().includes('/Questionnaire/$save') &&
           response.request().method() === 'POST' &&
           response.status() === 200

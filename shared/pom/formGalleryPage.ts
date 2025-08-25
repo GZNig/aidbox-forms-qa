@@ -27,7 +27,7 @@ export class FormGalleryPage extends BasePage {
   /** найти карточку по имени */
   async getFormCardByName(name: string): Promise<FormCard> {
     const cards = await this.getAllFormCards();
-    const card = cards.find(async card => (await card.getTitle()) === name);
+    const card = cards.find(async (card) => (await card.getTitle()) === name);
     if (!card) {
       throw new Error(`FormCard with name "${name}" not found`);
     }
@@ -36,7 +36,7 @@ export class FormGalleryPage extends BasePage {
 
   async getCardTitles(): Promise<string[]> {
     const cards = await this.getAllFormCards();
-    return Promise.all(cards.map(c => c.getTitle()));
+    return Promise.all(cards.map((c) => c.getTitle()));
   }
 
   async importForm(name: string): Promise<void> {
@@ -68,6 +68,6 @@ export class FormCard {
   }
 
   async getTitle(): Promise<string> {
-    return await this.text.evaluate(el => (el.childNodes[0]?.textContent || '').trim());
+    return await this.text.evaluate((el) => (el.childNodes[0]?.textContent || '').trim());
   }
 }

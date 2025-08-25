@@ -28,7 +28,7 @@ test.describe('Aidbox - Questionnaires (Form Gallery)', () => {
     const allTitles = await galleryPage.getCardTitles();
     const randomTitle = allTitles[Math.floor(Math.random() * allTitles.length)];
 
-    const expectedTitles = allTitles.filter(t =>
+    const expectedTitles = allTitles.filter((t) =>
       t.toLowerCase().includes(randomTitle.toLowerCase().trim())
     );
 

@@ -16,7 +16,7 @@ export async function startInstance(licenseId: string, baseURL: string) {
     } catch {
       console.log('Health check error, retrying...');
     }
-    await new Promise(r => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 2000));
   }
   throw new Error('Instance did not become healthy in time');
 }
