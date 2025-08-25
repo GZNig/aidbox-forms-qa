@@ -1,5 +1,6 @@
 # dependencies
 node_modules/
+pnpm-debug.log*
 
 # testing artifacts
 playwright-report/
@@ -13,8 +14,18 @@ npm-debug.log*
 pnpm-debug.log*
 
 # OS files
+.idea/
+.vscode/
 .DS_Store
 Thumbs.db
 
 # env files
 .env
+
+docker-compose.override.yml
+docker-compose.yaml
+docker-compose.yml
+*.log
+
+tsconfig.tsbuildinfo
+*.tsbuildinfo
