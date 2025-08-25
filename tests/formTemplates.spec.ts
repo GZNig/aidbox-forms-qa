@@ -54,16 +54,12 @@ test.describe('Aidbox - Questionnaires (Form Templates)', () => {
 
       await test.step('Ensure the card is visible', async () => {
         await formTemplatesPage.page.reload();
-        await expect(
-          formTemplatesPage.cards.filter({ hasText: created.title! })
-        ).toHaveCount(1);
+        await expect(formTemplatesPage.cards.filter({ hasText: created.title! })).toHaveCount(1);
       });
 
       await formTemplatesPage.deleteCard(created.title!);
       await test.step('Ensure the card is deleted', async () => {
-        await expect(
-          formTemplatesPage.cards.filter({ hasText: created.title! })
-        ).toHaveCount(0);
+        await expect(formTemplatesPage.cards.filter({ hasText: created.title! })).toHaveCount(0);
       });
     }
   );
