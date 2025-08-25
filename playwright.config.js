@@ -4,6 +4,9 @@ import { config, qaseConfig } from '@config';
 export default defineConfig({
   testDir: './tests',
   timeout: 120000,
+  expect: {
+    timeout: 10000,
+  },
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -13,7 +16,7 @@ export default defineConfig({
     ['json', { outputFile: 'test-results/results.json' }],
     ['junit', { outputFile: 'test-results/results.xml' }],
     ['playwright-qase-reporter', {
-      debug: true,
+      debug: false,
       mode: 'testops',
       environment: qaseConfig.environmentId,
       testops: {
@@ -52,5 +55,21 @@ export default defineConfig({
         },
       },
     },
+    // {
+    //   name: 'firefox',
+    //   use: {
+    //     ...devices['Desktop Firefox'],
+    //     viewport: { width: 1512, height: 982 },
+    //     deviceScaleFactor: 2,
+    //   },
+    // },
+    // {
+    //   name: 'webkit',
+    //   use: {
+    //     ...devices['Desktop Safari'],
+    //     viewport: { width: 1512, height: 982 },
+    //     deviceScaleFactor: 2,
+    //   },
+    // },
   ],
 });

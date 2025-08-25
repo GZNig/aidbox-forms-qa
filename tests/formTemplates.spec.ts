@@ -29,9 +29,8 @@ test.describe('Aidbox - Questionnaires (Form Templates)', () => {
     await formTemplatesPage.filterByText(nonexistentText);
 
     await test.step('Ensure the list of cards is empty', async () => {
-      expect(await formTemplatesPage.isOpen()).toBe(true);
-      expect(await formTemplatesPage.getAllCards()).toEqual([]);
-      expect(await formTemplatesPage.emptyState.isVisible()).toBe(true);
+      await expect(formTemplatesPage.cards).toHaveCount(0);
+      await expect(formTemplatesPage.emptyState).toBeVisible();
     });
   });
 });
