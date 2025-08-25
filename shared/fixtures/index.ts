@@ -30,7 +30,7 @@ export const test = base.extend<
 >({
   // Поднимаем Aidbox инстанс
   aidboxInstance: [
-    async ({ }, use) => {
+    async ({}, use) => {
       const { license } = await createLicense();
       if (!license) throw new Error('No license returned');
 
@@ -55,10 +55,15 @@ export const test = base.extend<
 
   // Один раз логинимся админом, получаем cookies
   adminSession: async ({ aidboxInstance, page, context }, use) => {
-    const cookies = await loginAsAdmin(page, context, aidboxInstance.url, aidboxInstance.adminPassword);
+    const cookies = await loginAsAdmin(
+      page,
+      context,
+      aidboxInstance.url,
+      aidboxInstance.adminPassword
+    );
 
-    const cookieHeader = cookies.map(c => c.split(';')[0]).join('; ');
-    const cookieObjects = cookies.map(raw => parseSetCookie(raw, aidboxInstance.url));
+    const cookieHeader = cookies.map((c) => c.split(';')[0]).join('; ');
+    const cookieObjects = cookies.map((raw) => parseSetCookie(raw, aidboxInstance.url));
     await context.addCookies(cookieObjects);
 
     await use({ cookieHeader, cookies });
@@ -66,7 +71,9 @@ export const test = base.extend<
 
   // Авторизованная страница
   authenticatedPage: async ({ page, context, adminSession, aidboxInstance }, use) => {
-    await context.addCookies(adminSession.cookies.map(raw => parseSetCookie(raw, aidboxInstance.url)));
+    await context.addCookies(
+      adminSession.cookies.map((raw) => parseSetCookie(raw, aidboxInstance.url))
+    );
     await page.goto(new FormTemplatesPage(page).path);
 
     await use({ page });

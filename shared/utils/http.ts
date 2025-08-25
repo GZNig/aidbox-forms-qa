@@ -48,7 +48,9 @@ export interface JsonRequestOptions<TBody> {
  * Выполнить HTTP-запрос и вернуть JSON-ответ (если он был).
  * При статусах не 2xx выбрасывает Error с текстом ответа.
  */
-export async function requestJson<TResponse, TBody = unknown>(options: JsonRequestOptions<TBody>): Promise<TResponse> {
+export async function requestJson<TResponse, TBody = unknown>(
+  options: JsonRequestOptions<TBody>
+): Promise<TResponse> {
   const url = new URL(options.path, options.baseUrl);
   const isHttps = url.protocol === 'https:';
   const transport = isHttps ? https : http;
@@ -89,7 +91,9 @@ export async function requestJson<TResponse, TBody = unknown>(options: JsonReque
           const text = Buffer.concat(chunks).toString('utf-8');
           if (res.statusCode && res.statusCode >= 200 && res.statusCode < 300) {
             try {
-              const json = text ? (JSON.parse(text) as TResponse) : (undefined as unknown as TResponse);
+              const json = text
+                ? (JSON.parse(text) as TResponse)
+                : (undefined as unknown as TResponse);
               resolve(json);
             } catch (e) {
               // No JSON body
@@ -111,5 +115,3 @@ export async function requestJson<TResponse, TBody = unknown>(options: JsonReque
     req.end();
   });
 }
-
-

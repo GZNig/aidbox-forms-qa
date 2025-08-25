@@ -109,5 +109,3 @@ export function createComponentQuestionnaire(
 export function createQuestionnaire(questionary: QuestionnaireData): QuestionnaireData {
   return questionary;
 }
-
-
