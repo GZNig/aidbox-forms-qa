@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import { config } from '@config';
+import { config, qaseConfig } from '@config';
 
 export default defineConfig({
   testDir: './tests',
@@ -9,16 +9,34 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: 1,
   reporter: [
-    ['html'],
+    ['html',{ outputFile: 'test-results/results.html' }],
     ['json', { outputFile: 'test-results/results.json' }],
     ['junit', { outputFile: 'test-results/results.xml' }],
+    ['playwright-qase-reporter', {
+      debug: true,
+      mode: 'testops',
+      environment: qaseConfig.environmentId,
+      testops: {
+        api: {
+          token: qaseConfig.apiKey,
+        },
+        project: qaseConfig.projectCode,
+        uploadAttachments: true,
+        run: {
+          id: undefined,
+          title: "Test run as a example",
+          description: "Test run as a example to present the results in the Qase TestOps",
+          complete: true,
+        },
+      },
+    }],
   ],
   use: {
     baseURL: config.baseURL,
 
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    trace: 'on-failure',
+    screenshot: 'on',
+    video: 'on',
     headless: false,
   },
 
