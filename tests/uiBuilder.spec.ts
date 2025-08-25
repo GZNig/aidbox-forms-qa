@@ -23,9 +23,10 @@ test.describe('Aidbox - Questionnaires (UI Builder)', () => {
         { type: 'Reusable form', qaseId: 127 },
     ].forEach(({ type, qaseId }) => {
         test(qase(qaseId, `New empty ${type} is created when save ${type} in UI Builder`), async () => {
-            await uiBuilderPage.titleInput.fill(`New Test ${type}`);
-            await uiBuilderPage.urlInput.fill(`new-test-${type.toLowerCase()}`);
+            await uiBuilderPage.setTitle(`New Test ${type}`);
+            await uiBuilderPage.setUrl(`new-test-${type.toLowerCase()}`);
             await uiBuilderPage.selectReusableContext(type);
+
             const savePromise = uiBuilderPage.page.waitForResponse(
                 response =>
                     response.url().includes('/Questionnaire/$save') &&
@@ -37,7 +38,10 @@ test.describe('Aidbox - Questionnaires (UI Builder)', () => {
 
             await formTemplatesPage.open();
             expect(await formTemplatesPage.isOpen()).toBe(true);
-            expect(await formTemplatesPage.getCardByName(`New Test ${type}`)).toBeDefined();
+
+            await test.step('Ensure the card is displayed', async () => {
+                expect(await formTemplatesPage.getCardByName(`New Test ${type}`)).toBeDefined();
+            });
         });
     });
 });

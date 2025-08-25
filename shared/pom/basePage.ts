@@ -17,7 +17,7 @@ export abstract class BasePage {
 
   async isOpen(path?: string): Promise<boolean> {
     const expectedPath = path || this.path;
-    return await test.step(`Check if '${expectedPath}' page is open`, async () => {
+    return await test.step(`Ensure '${expectedPath}' page is open`, async () => {
       await this.page.waitForLoadState('networkidle');
 
       if (this.page.url().includes(expectedPath)) return true;

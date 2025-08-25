@@ -19,8 +19,7 @@ test.describe('Aidbox - Questionnaires (Form Gallery)', () => {
 
   test(qase(128, 'Redirect to UI Builder when import questionnaire from gallery'), async () => {
     const [firstTitle] = await galleryPage.getCardTitles();
-    const formCard = await galleryPage.getFormCardByName(firstTitle);
-    await formCard.importBtn.click();
+    await galleryPage.importForm(firstTitle);
 
     expect(await uiBuilderPage.isOpen()).toBe(true);
   });
@@ -33,13 +32,13 @@ test.describe('Aidbox - Questionnaires (Form Gallery)', () => {
       t.toLowerCase().includes(randomTitle.toLowerCase().trim())
     );
 
-    await galleryPage.searchInput.fill(randomTitle);
+    await galleryPage.filterByText(randomTitle);
 
-    await expect(galleryPage.cards, `Cards count should be ${expectedTitles.length}`).toHaveCount(
-      expectedTitles.length
+    await test.step(`Ensure the number of cards displayed: ${expectedTitles.length}`, async () =>
+      expect(galleryPage.cards).toHaveCount(expectedTitles.length)
     );
-    expect(await galleryPage.getCardTitles(), `Cards titles should be ${expectedTitles}`).toEqual(
-      expectedTitles
+    await test.step(`Ensure cards titles are correct: ${expectedTitles}`, async () =>
+      expect(await galleryPage.getCardTitles()).toEqual(expectedTitles)
     );
   });
 });

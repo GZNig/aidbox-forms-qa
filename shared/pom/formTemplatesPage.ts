@@ -52,6 +52,24 @@ export class FormTemplatesPage extends BasePage {
     }
     return new FormCard(card);
   }
+
+  async createTemplate(): Promise<void> {
+    await test.step('Click Create template button', async () => {
+      await this.createTemplateBtn.click();
+    });
+  }
+
+  async createInUiBuilder(): Promise<void> {
+    await test.step('Click Create in UI Builder button', async () => {
+      await this.createInUiBuilderBtn.click();
+    });
+  }
+
+  async filterByText(text: string): Promise<void> {
+    await test.step(`Filter by text: ${text}`, async () => {
+      await this.searchInput.fill(text);
+    });
+  }
 }
 
 export class FormCard {

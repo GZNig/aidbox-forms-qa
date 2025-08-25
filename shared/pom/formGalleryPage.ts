@@ -38,6 +38,18 @@ export class FormGalleryPage extends BasePage {
     const cards = await this.getAllFormCards();
     return Promise.all(cards.map(c => c.getTitle()));
   }
+
+  async importForm(name: string): Promise<void> {
+    await test.step(`Import form: ${name}`, async () => {
+      const card = await this.getFormCardByName(name);
+      await card.importBtn.click();
+    });
+  }
+  async filterByText(text: string): Promise<void> {
+    await test.step(`Filter by text: ${text}`, async () => {
+      await this.searchInput.fill(text);
+    });
+  }
 }
 
 export class FormCard {

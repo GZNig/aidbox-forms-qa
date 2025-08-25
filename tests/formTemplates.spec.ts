@@ -18,17 +18,20 @@ test.describe('Aidbox - Questionnaires (Form Templates)', () => {
   });
 
   test(qase(130, 'Redirect to UI Builder when click Create button in Form Templates'), async () => {
-    await formTemplatesPage.createTemplateBtn.click();
-    await formTemplatesPage.createInUiBuilderBtn.click();
+    await formTemplatesPage.createTemplate();
+    await formTemplatesPage.createInUiBuilder();
+
     expect(await uiBuilderPage.isOpen()).toBe(true);
   });
 
   test(qase(131, 'No forms found is displayed when filter by text if there are no forms or components with this text'), async () => {
     const nonexistentText = `__nonexistent_${Date.now().toString()}__`;
-    await formTemplatesPage.searchInput.fill(nonexistentText);
+    await formTemplatesPage.filterByText(nonexistentText);
 
-    expect(await formTemplatesPage.isOpen()).toBe(true);
-    expect(await formTemplatesPage.getAllCards()).toEqual([]);
-    expect(await formTemplatesPage.emptyState.isVisible()).toBe(true);
+    await test.step('Ensure the list of cards is empty', async () => {
+      expect(await formTemplatesPage.isOpen()).toBe(true);
+      expect(await formTemplatesPage.getAllCards()).toEqual([]);
+      expect(await formTemplatesPage.emptyState.isVisible()).toBe(true);
+    });
   });
 });

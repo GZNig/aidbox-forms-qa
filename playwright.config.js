@@ -37,7 +37,7 @@ export default defineConfig({
     trace: 'on-failure',
     screenshot: 'on',
     video: 'on',
-    headless: false,
+    headless: true,
   },
 
   projects: [
