@@ -41,7 +41,7 @@ test.describe('Aidbox API Client', () => {
       resourceType: 'Questionnaire',
       title: `API Test Component ${Date.now()}`,
       status: 'draft',
-      item: [],
+      item: [{ linkId: 'q1', text: 'Question', type: 'string', required: true }],
     };
     const createdComponent = await test.step('Create Component Questionnaire', async () => {
       return aidBoxClient.resource.create('Questionnaire', componentData);
