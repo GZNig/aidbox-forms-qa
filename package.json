@@ -33,6 +33,6 @@
   },
   "dependencies": {
     "@aidbox/client-sdk-js": "^1.2.11",
-    "dotenv": "^16.4.0"
+    "dotenv": "^17.2.1"
   }
 }
