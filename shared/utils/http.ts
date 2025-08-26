@@ -10,14 +10,6 @@
  * - Добавляет заголовки Content-Type/Accept, поддерживает Cookie и x-csrf-token.
  * - Бросает ошибку при ответах не 2xx с текстом ответа.
  *
- * Пример:
- *   await requestJson({
- *     method: 'PUT',
- *     baseUrl: 'http://localhost:8080',
- *     path: '/Client/test',
- *     body: { id: 'test', secret: '...' },
- *     cookieHeader: 'sid=...; other=...'
- *   });
  */
 import http from 'http';
 import https from 'https';

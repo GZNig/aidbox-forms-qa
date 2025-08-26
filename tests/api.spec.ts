@@ -1,5 +1,13 @@
+import { QuestionnaireItem } from '@aidbox/sdk-r4/types/hl7-fhir-r4-core/Questionnaire';
 import { expect, test } from '@fixtures/index';
-import { createComponentQuestionnaire, QuestionnaireData } from '@utils/fhir-helpers';
+
+export interface QuestionnaireData {
+  title: string;
+  url?: string;
+  status: 'draft' | 'active' | 'retired' | 'unknown';
+  resourceType: 'Questionnaire';
+  item?: QuestionnaireItem[];
+}
 
 test.describe('Aidbox API Client', () => {
   test('Health check returns status 200', async ({ aidBoxClient }) => {
@@ -29,7 +37,12 @@ test.describe('Aidbox API Client', () => {
   });
 
   test('Creates a component questionnaire with items', async ({ aidBoxClient }) => {
-    const componentData = createComponentQuestionnaire(`API Test Component ${Date.now()}`);
+    const componentData: QuestionnaireData = {
+      resourceType: 'Questionnaire',
+      title: `API Test Component ${Date.now()}`,
+      status: 'draft',
+      item: [],
+    };
     const createdComponent = await test.step('Create Component Questionnaire', async () => {
       return aidBoxClient.resource.create('Questionnaire', componentData);
     });
