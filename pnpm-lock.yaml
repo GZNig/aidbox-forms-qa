@@ -37,8 +37,8 @@ importers:
         specifier: ^5.1.0
         version: 5.5.4(eslint-config-prettier@9.1.2(eslint@8.57.1))(eslint@8.57.1)(prettier@3.6.2)
       playwright-qase-reporter:
-        specifier: ^2.1.5
-        version: 2.1.5(@playwright/test@1.55.0)
+        specifier: ^2.1.7
+        version: 2.1.7(@playwright/test@1.55.0)
       prettier:
         specifier: ^3.2.0
         version: 3.6.2
@@ -213,8 +213,8 @@ packages:
     peerDependencies:
       axios: 0.x || 1.x
 
-  axios@1.11.0:
-    resolution: {integrity: sha512-1Lx3WLFQWm3ooKDYZD1eXmoGO9fxYQjrycfHFC8P0sCfQVXyROp0p9PFWBehewBOdCwHc+f/b8I0fMto5eSfwA==}
+  axios@1.13.2:
+    resolution: {integrity: sha512-VPk9ebNqPcy5lRGuSlKx752IlDatOjT9paPlm8A7yOuW2Fbvp4X3JznJtT4f0GzGLLiWE9W8onz51SqLYwzGaA==}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -388,8 +388,8 @@ packages:
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
 
-  fast-uri@3.0.6:
-    resolution: {integrity: sha512-Atfo14OibSv5wAp4VWNsFYE1AchQRTv9cBGWET4pZWHzYshFSS9NQI6I57rdKn9croWVMbYFbLhJ+yJvmZIIHw==}
+  fast-uri@3.1.0:
+    resolution: {integrity: sha512-iPeeDKJSWf4IEOasVVrknXpaBV0IApz/gp7S2bb7Z4Lljbl2MGJRqInZiUrQwV16cpzw/D3S5j5Julj/gT52AA==}
 
   fastq@1.19.1:
     resolution: {integrity: sha512-GwLTyxkCXjXbxqIhTsMI2Nui8huMPtnxg7krajPJAjnEG/iiOS7i+zCtWGZR9G0NBKbXKh6X9m9UIsYX/N6vvQ==}
@@ -422,8 +422,8 @@ packages:
       debug:
         optional: true
 
-  form-data@4.0.4:
-    resolution: {integrity: sha512-KrGhL9Q4zjj0kiUt5OO4Mr/A/jlI2jDYs5eHBpYHPcBEVSiipAvn2Ko2HnPe20rmcuuvMHNdZFp+4IlGTMF0Ow==}
+  form-data@4.0.5:
+    resolution: {integrity: sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==}
     engines: {node: '>= 6'}
 
   fs.realpath@1.0.0:
@@ -644,8 +644,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright-qase-reporter@2.1.5:
-    resolution: {integrity: sha512-5WsZ+Lca03hxVY8xIIVyFd8w0z+nMTrnBp9po+3v2UAbf5d9wGQPqbELPtV3/1DfxlTiOzWy5Q4VWgJ0X/vouA==}
+  playwright-qase-reporter@2.1.7:
+    resolution: {integrity: sha512-iN/AeCN9GXjZ7665NqW8I85frcVgFmj381zz7x53rjjNiRqYtj1UcRqrSr91L59lekbrALyke6lAcmn+3+hx/Q==}
     engines: {node: '>=14'}
     peerDependencies:
       '@playwright/test': '>=1.16.3'
@@ -675,16 +675,16 @@ packages:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
 
-  qase-api-client@1.0.5:
-    resolution: {integrity: sha512-Y/xsiQBofnRdAzDqWFFl305igFiqLYcJN5Tkn7J86i5wja28ifHvJsvg8yr0kU9CV5/h1hArpu5m29sRnziuHw==}
+  qase-api-client@1.1.1:
+    resolution: {integrity: sha512-H/zSGwYmghOvxtGAbEg5AtDuyoHNGgB4zgnWhZIQpnnsY9D8242PPX0lDqyobm1w//A7imnLvzXHGDrOPeacrw==}
     engines: {node: '>=14'}
 
-  qase-api-v2-client@1.0.3:
-    resolution: {integrity: sha512-zkgcpRyDRnpKENm1Ak32Bg4wAPKBUoel/BHzoctPKYew/ZHkhjel1GDd0Jv5vm90TlhCCzCIwbY0RKGUB8dw+A==}
+  qase-api-v2-client@1.0.4:
+    resolution: {integrity: sha512-Z9R/mc0sYcgRndTEJ632x46+Ra0g5LCJvE2/VoJnm9w9WhV6No/IzA51SubdRldjcdEGlLeERIhxRce+IJRqCw==}
     engines: {node: '>=14'}
 
-  qase-javascript-commons@2.4.1:
-    resolution: {integrity: sha512-B/aYqeyGLH6OGe/93pXpDlALm/W6+5NSv//wsDk3MOlKm1JzaXZ2ADyvtVRvGfiTav2tv6jPS8tTXu7LOk/dXA==}
+  qase-javascript-commons@2.4.16:
+    resolution: {integrity: sha512-GP6JVPxB9CCnVqRCGgDB0lKTq2qpTVkjHryEnk+ra3s4JHKrL4/IPSd5MZWMqReFINebcNqDs1EE5GvJZa6t+A==}
     engines: {node: '>=14'}
 
   queue-microtask@1.2.3:
@@ -963,7 +963,7 @@ snapshots:
   ajv@8.17.1:
     dependencies:
       fast-deep-equal: 3.1.3
-      fast-uri: 3.0.6
+      fast-uri: 3.1.0
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
@@ -983,15 +983,15 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios-retry@4.5.0(axios@1.11.0):
+  axios-retry@4.5.0(axios@1.13.2):
     dependencies:
-      axios: 1.11.0
+      axios: 1.13.2
       is-retry-allowed: 2.2.0
 
-  axios@1.11.0:
+  axios@1.13.2:
     dependencies:
       follow-redirects: 1.15.11
-      form-data: 4.0.4
+      form-data: 4.0.5
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
@@ -1187,7 +1187,7 @@ snapshots:
 
   fast-levenshtein@2.0.6: {}
 
-  fast-uri@3.0.6: {}
+  fast-uri@3.1.0: {}
 
   fastq@1.19.1:
     dependencies:
@@ -1216,7 +1216,7 @@ snapshots:
 
   follow-redirects@1.15.11: {}
 
-  form-data@4.0.4:
+  form-data@4.0.5:
     dependencies:
       asynckit: 0.4.0
       combined-stream: 1.0.8
@@ -1420,11 +1420,11 @@ snapshots:
 
   playwright-core@1.55.0: {}
 
-  playwright-qase-reporter@2.1.5(@playwright/test@1.55.0):
+  playwright-qase-reporter@2.1.7(@playwright/test@1.55.0):
     dependencies:
       '@playwright/test': 1.55.0
       chalk: 4.1.2
-      qase-javascript-commons: 2.4.1
+      qase-javascript-commons: 2.4.16
       uuid: 9.0.1
     transitivePeerDependencies:
       - debug
@@ -1447,33 +1447,33 @@ snapshots:
 
   punycode@2.3.1: {}
 
-  qase-api-client@1.0.5:
+  qase-api-client@1.1.1:
     dependencies:
-      axios: 1.11.0
-      axios-retry: 4.5.0(axios@1.11.0)
+      axios: 1.13.2
+      axios-retry: 4.5.0(axios@1.13.2)
     transitivePeerDependencies:
       - debug
 
-  qase-api-v2-client@1.0.3:
+  qase-api-v2-client@1.0.4:
     dependencies:
-      axios: 1.11.0
-      axios-retry: 4.5.0(axios@1.11.0)
+      axios: 1.13.2
+      axios-retry: 4.5.0(axios@1.13.2)
     transitivePeerDependencies:
       - debug
 
-  qase-javascript-commons@2.4.1:
+  qase-javascript-commons@2.4.16:
     dependencies:
       ajv: 8.17.1
       async-mutex: 0.5.0
       chalk: 4.1.2
       env-schema: 5.2.1
-      form-data: 4.0.4
+      form-data: 4.0.5
       lodash.get: 4.4.2
       lodash.merge: 4.6.2
       lodash.mergewith: 4.6.2
       mime-types: 2.1.35
-      qase-api-client: 1.0.5
-      qase-api-v2-client: 1.0.3
+      qase-api-client: 1.1.1
+      qase-api-v2-client: 1.0.4
       strip-ansi: 6.0.1
       uuid: 9.0.1
     transitivePeerDependencies:
